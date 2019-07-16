@@ -2,11 +2,11 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
-import Login from './components/Login.vue';
-import Index from './components/Index.vue';
-import Project from './components/Project.vue';
-import Contract from './components/Contract.vue';
-import ParkGis from './components/Park-gis.vue';
+import Login from './pages/Login.vue';
+import Pages from './pages/Pages.vue';
+import Project from './pages/Project.vue';
+import Contract from './pages/Contract.vue';
+import ParkGis from './pages/Park-gis.vue';
 
 
 const router = new VueRouter({
@@ -19,20 +19,23 @@ const router = new VueRouter({
         path: '/login',
         component: Login
     }, {
-        path: '/index',
-        component: Index
-    },{
-        path: '/project',
-        component: Project
-    },{
-        path: '/contract',
-        component: Contract
-    }, {
-        path: '/park-gis',
-        component: ParkGis
+        path: '/pages',
+        component: Pages,
+        children: [
+            {
+                path: 'project',
+                component: Project
+            },{
+                path: 'contract',
+                component: Contract
+            }, {
+                path: 'park-gis',
+                component: ParkGis
+            }
+        ]
     }, {
         path: '*',
-        redirect: '/index'
+        redirect: '/pages/park-gis'
     }]
 })
 

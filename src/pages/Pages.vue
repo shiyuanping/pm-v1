@@ -5,9 +5,13 @@
           <template v-for="(menu, i) in menuDatas">
             <el-submenu :key="i" :index="String(menu.index)" v-if="menu.children">
               <template slot="title">{{menu.name}}</template>
-              <el-menu-item :index="String(minimenu.index)" v-for="(minimenu, j) in menu.children" :key="i+j">{{minimenu.name}}</el-menu-item>
+              <el-menu-item :index="String(minimenu.index)" v-for="(minimenu, j) in menu.children" :key="i+j">
+                <router-link :to='minimenu.url'>{{minimenu.name}}</router-link>
+              </el-menu-item>
             </el-submenu>
-            <el-menu-item :key="i" :index="String(menu.index)" v-if="!menu.children">{{menu.name}}</el-menu-item>
+            <el-menu-item :key="i" :index="String(menu.index)" v-if="!menu.children" >
+              <router-link :to='menu.url'>{{menu.name}}</router-link>
+            </el-menu-item>
           </template>
         </el-menu>
       </el-header>
@@ -27,14 +31,14 @@
           add tab
         </el-button>
       </div> -->
-
+        <router-view></router-view>
       </el-main>
     </el-container>
 </template>
 
 <script>
 export default {
-    name: 'Index',
+    name: 'Pages',
     data() {
       return {
         activeIndex: '1',
@@ -59,19 +63,19 @@ export default {
                 index: 1.1,
                 icon: '',
                 name: '项目列表',
-                url: '/project-list'
+                url: '/pages/project'
               }, {
                 index: 1.2,
                 icon: '',
                 name: '合同列表',
-                url: '/contract-list'
+                url: '/pages/contract'
               },
             ]
           }, {
             index: 2,
             icon: '',
             name: '园区GIS',
-            url: '/park-gis'
+            url: '/pages/park-gis'
           }
         ]
       };
