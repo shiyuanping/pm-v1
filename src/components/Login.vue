@@ -50,12 +50,11 @@ export default {
   },
   methods: {
     login() {
-      console.log('登录点击事件');
+      // console.log('登录点击事件');
     },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          console.log(this.ruleForm.name);
           this.$http({
             method: 'get',
             url: '/api/v1/accounts/login',
@@ -64,14 +63,15 @@ export default {
               password: this.ruleForm.password
             }
           }).then(res => {
-            console.log(res);
+            // console.log(res);
             localStorage.setItem('token', res.token);
-          }).catch(err => {
-            console.log(err);
+            this.$router.push({
+              path:'/index',
+            })
+          }).catch(() => {
             this.$message.error('账号或密码输入错误！');
           });
         } else {
-          console.log('error submit!!');
           return false;
         }
       });

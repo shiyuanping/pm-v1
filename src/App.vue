@@ -1,20 +1,21 @@
 <template>
   <div id="app">
-    <Login msg="Welcome to Your Vue.js App"/>
-    <Index />
+    <!-- <Login msg="Welcome to Your Vue.js App"/> -->
+    <!-- <Index /> -->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Login from './components/Login.vue';
-import Index from './components/Index.vue';
+// import Login from './components/Login.vue';
+// import Index from './components/Index.vue';
 
 
 export default {
   name: 'app',
   components: {
-    Login,
-    Index
+    // Login,
+    // Index
   }
 }
 </script>
@@ -26,6 +27,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+body {
+  margin: 0;
 }
 </style>
